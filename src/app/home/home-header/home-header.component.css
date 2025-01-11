@@ -19,8 +19,8 @@ header{
             }
             & h1 {
                 font-size: 3vmin;
-                color: white;
-                font-weight: 30;
+                color: var(--color-secondary);
+                font-weight: 500;
             }
         }
         & .search-container{
@@ -40,12 +40,12 @@ header{
             justify-content: center;
             & .btn-login {
                 /* background-color: var(--color-secondary); */
-                color: var(--color-text);
+                color: var(--color-secondary);
                 /*width: 4vmin;
                 height: 4vmin;*/
             }
             & .btn-menu{
-                color: var(--color-text);
+                color: var(--color-secondary);
             }
         }
     }

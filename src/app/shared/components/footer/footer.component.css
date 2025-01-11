@@ -1,0 +1,18 @@
+footer {
+    background-color: var(--color-primary);
+    height: 8vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    & span {
+        font-size: 1.5vmin;
+        font-weight: 300;
+        color: var(--color-secondary);
+    }
+    & img {
+        width: 2.5vmin;
+        height: 2.5vmin;
+    }
+}
