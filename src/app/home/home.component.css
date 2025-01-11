@@ -1,4 +1,12 @@
-.content {
-    height: 83vh;
-    width: 100%;
+.container {
+    display: flex;
+    margin-top: 35px;
+    margin-bottom: 35px;
+    & .container-book{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        justify-content: flex-start;
+        margin-left: 45px;
+    }
 }

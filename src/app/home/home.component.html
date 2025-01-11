@@ -1,11 +1,14 @@
 <app-home-header></app-home-header>
-<br />
-<br />
-<div style="margin-left: 10vw">
-  <app-book-card
-    style="display: flex; flex-wrap: wrap; gap: 15px; height: 77vh"
-  ></app-book-card>
+<div class="container">
+  <div class="container-book">
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+    <app-book-card [data]="bookData"></app-book-card>
+  </div>
 </div>
-<br />
-<br />
 <app-footer></app-footer>

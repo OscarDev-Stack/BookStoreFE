@@ -1,165 +1,23 @@
 <div class="container box-shadow">
   <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
+    <img [src]="data.imageUrl" alt="book" (error)="ImageError()" />
   </div>
   <div class="data-container">
     <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
+      <span class="const">Titulo: </span>
+      <span class="title">{{ data.name }}</span>
     </p>
     <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
+      <span class="const">Autor: </span>
+      <span class="author">{{ data.author }}</span>
     </p>
     <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
+      <span class="const">Editorial: </span>
+      <span class="editorial">{{ data.editorial }}</span>
     </p>
     <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
-    </p>
-    <p>
-      <span></span>
-    </p>
-  </div>
-</div>
-<div class="container box-shadow">
-  <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
-  </div>
-  <div class="data-container">
-    <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
-    </p>
-    <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
-    </p>
-    <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
-    </p>
-    <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
-    </p>
-    <p>
-      <span></span>
-    </p>
-  </div>
-</div>
-<div class="container box-shadow">
-  <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
-  </div>
-  <div class="data-container">
-    <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
-    </p>
-    <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
-    </p>
-    <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
-    </p>
-    <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
-    </p>
-    <p>
-      <span></span>
-    </p>
-  </div>
-</div>
-<div class="container box-shadow">
-  <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
-  </div>
-  <div class="data-container">
-    <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
-    </p>
-    <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
-    </p>
-    <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
-    </p>
-    <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
-    </p>
-    <p>
-      <span></span>
-    </p>
-  </div>
-</div>
-<div class="container box-shadow">
-  <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
-  </div>
-  <div class="data-container">
-    <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
-    </p>
-    <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
-    </p>
-    <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
-    </p>
-    <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
-    </p>
-    <p>
-      <span></span>
-    </p>
-  </div>
-</div>
-<div class="container box-shadow">
-  <div class="image">
-    <img src="/images/4368449-1200-auto.png" alt="book" />
-  </div>
-  <div class="data-container">
-    <p>
-      <span class="const">Titulo:</span>
-      <span class="title"
-        >Harry Potter y la piedra filosofal ( Harry Potter 1 )</span
-      >
-    </p>
-    <p>
-      <span class="const">Autor:</span>
-      <span class="author">J.K. Rowling</span>
-    </p>
-    <p>
-      <span class="const">Editorial:</span>
-      <span class="editorial">Salamandra Infantil y Juvenil</span>
-    </p>
-    <p>
-      <span class="const">ISBN:</span>
-      <span class="isbn">9786073844147</span>
+      <span class="const">ISBN: </span>
+      <span class="isbn">{{ data.isbn }}</span>
     </p>
     <p>
       <span></span>
