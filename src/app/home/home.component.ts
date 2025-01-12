@@ -2,32 +2,81 @@ import { Component, inject, OnInit } from '@angular/core';
 import { HomeHeaderComponent } from './home-header/home-header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { BookCardComponent } from "../book-card/book-card.component";
-import { book } from '../shared/components/footer/models/book.model';
-import { HttpClient } from '@angular/common/http';
-
+import { book } from '../shared/models/book.model';
+import { NgFor, NgIf } from '@angular/common';
+import { HomeService } from './home.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import { customer } from '../shared/models/customer.model';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HomeHeaderService } from './home-header/home-header.service';
 
 @Component({
   selector: 'app-home',
-  imports: [HomeHeaderComponent, FooterComponent, BookCardComponent],
+  imports: [HomeHeaderComponent, FooterComponent, BookCardComponent, NgFor, NgIf,MatFormFieldModule, MatSelectModule, ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
+  lstCustomerOrigin: customer[] = [];
+  customer: customer[] = [];
   
-  bookData:book = {
-      "id": 11,
-      "name": "Don Quijote de la Mancha",
-      "author": "Flix",
-      "isbn": "9788415850250",
-      "editorial": "Dibbuks",
-      "synopsis": "Alonso Quijano, un anciano duro de pelar, debe de salvar al pueblo de Tobosow de la invasión de una empresa dispuesta a construir un gigantesco parque de molinos eólicos. Con la ayuda de su bicicleta Rocinante y de su nieto Robin (fan de Batman y transmutado aquí en un perfecto Sancho Panza), Alonso se lanza sin parpadear en una arriesgada aventura digna del más valiente caballero. Cervantes creó uno de los héroes más famoso de la literatura e imaginería de nuestro país, Don Quijote. Ahora Flix se atreve a interpretar de una manera desenfrenada y muy actualizada a nuestro héroe. Partiendo de lugares y personajes que ya conocemos todos, recrea una historia repleta de referencias a la medida de nuestro gran clásico. La mente desvariada de Alonso, la fantasía desmedida de su nieto y las peripecias en la que se ven envueltos no ocultan la verdadera naturaleza de este álbum que trata, emulando y utilizando la obra del insigne Miguel de Cervantes, de las duras pruebas de la vejez.",
-      "imageUrl": "https://localhost:7023/books/e9a9cb67-60ae-4968-8027-cc72b08a38fb.jpg",
-      "status": true
-  };
-  http = inject(HttpClient);
+  books: book[] = [];
+
+  homeService = inject(HomeService);
+
+  selectForm = new FormControl(0);
+
+  searchcustomer:number = 0;
+  searchBook:string = '';
+  homeheaderservice = inject(HomeHeaderService);
+
   ngOnInit(){
-    this.http.get("https://localhost:7023/api/Book");
+    this.homeService.getHomoData().subscribe((response) => {
+      this.books = response.data;
+     } );
+
+     let pruebaselect: customer = {
+      id: 1,
+      firstName: 'Oscar',
+      lastName: 'Juarez',
+      dni: '12345678T',
+      edad: 32,
+      status: true
+    };
+    this.lstCustomerOrigin.push(pruebaselect);
+    pruebaselect = {
+      id: 2,
+      firstName: 'Sergio',
+      lastName: 'Juarez',
+      dni: '12342588T',
+      edad: 58,
+      status: true
+    };
+    this.lstCustomerOrigin.push(pruebaselect);
+
+    this.customer = this.lstCustomerOrigin;
+
+     this.selectForm.valueChanges.subscribe((value) => {
+        this.searchcustomer = value || 0;
+        this.filterCustomer();
+     })
+
+     this.homeheaderservice.searchValue$.subscribe((value) => {
+        this.searchBook = value;
+        this.filterBook();
+     });
   }
 
+    filterCustomer(){
+      this.customer = this.searchcustomer === 0 ? this.lstCustomerOrigin : this.lstCustomerOrigin.filter(
+        (customer) => customer.id === this.searchcustomer);
+    }
+    filterBook(){
+      this.homeService.getHomeSeach(this.searchBook).subscribe((response) => {
+        console.log(this.searchBook);
+        this.books = response.data;
+       } );
+    }
   
 }

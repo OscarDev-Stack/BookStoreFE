@@ -1,14 +1,21 @@
-<app-home-header></app-home-header>
-<div class="container">
-  <div class="container-book">
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
-    <app-book-card [data]="bookData"></app-book-card>
+<div class="page-container">
+  <app-home-header></app-home-header>
+  <div class="container">
+    <div class="prubaselect">
+      <mat-form-field>
+        <mat-label>Cliente</mat-label>
+        <mat-select [formControl]="selectForm">
+          <mat-option [value]="0">Todos</mat-option>
+          <mat-option *ngFor="let custom of customer" [value]="custom.id">{{
+            custom.firstName + " " + custom.lastName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="container-book">
+      <app-book-card *ngFor="let book of books" [data]="book"></app-book-card>
+      <h3 *ngIf="books.length === 0">No se encontraron libros.</h3>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

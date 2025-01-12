@@ -1,0 +1,29 @@
+header {
+  background-color: var(--color-primary);
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  & .container {
+    width: 75vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    & .logo-container {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      & img {
+        width: 6vmin;
+        height: 6vmin;
+      }
+      & h1 {
+        font-size: 3vmin;
+        color: var(--color-secondary);
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+  }
+}

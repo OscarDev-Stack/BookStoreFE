@@ -2,8 +2,8 @@
     display: flex;
     width: 17vw;
     height: 25vh;
-    background-color: white;
-    color: black;
+    background-color: #FAFAFA;
+    color: var(--color-text-secondary);
     border-radius: 0.4rem;
     gap: 10px;
     border: solid black 1px;
@@ -22,6 +22,7 @@
         align-items: flex-start;
         justify-content: space-around;
         gap: 5px;
+        margin-right: 2px;
         & .const {
             font-weight: 500;
         }
@@ -29,7 +30,7 @@
             font-size: 1.5vmin;
         }
         & p{
-            margin: 5px 0px 5px 0px;
+            margin: 0.1em 0em 0.1em 0em;
         }
     }
     

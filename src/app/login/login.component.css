@@ -1,0 +1,47 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  & .content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & .card {
+      background-color: var(--secondary-color);
+      border-radius: 0.4rem;
+      width: 20vw;
+      & .title-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        & span {
+          color: var(--primary-color);
+          font-weight: 500;
+        }
+        & img {
+          margin-bottom: 15px;
+          width: 20vmin;
+          height: 12vmin;
+        }
+      }
+      & form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        & .email {
+          width: 80%;
+        }
+        & .password {
+          width: 80%;
+        }
+        & button {
+          margin-bottom: 25px;
+        }
+      }
+    }
+  }
+}
