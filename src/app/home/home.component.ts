@@ -1,5 +1,4 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HomeHeaderComponent } from './home-header/home-header.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { BookCardComponent } from "../book-card/book-card.component";
 import { book } from '../shared/models/book.model';
@@ -10,10 +9,11 @@ import {MatSelectModule} from '@angular/material/select';
 import { customer } from '../shared/models/customer.model';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeHeaderService } from './home-header/home-header.service';
+import { LoggedHeaderComponent } from "../shared/components/logged-header/logged-header.component";
 
 @Component({
   selector: 'app-home',
-  imports: [HomeHeaderComponent, FooterComponent, BookCardComponent, NgFor, NgIf,MatFormFieldModule, MatSelectModule, ReactiveFormsModule],
+  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, LoggedHeaderComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
