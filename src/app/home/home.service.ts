@@ -9,10 +9,11 @@ import { environment } from '../../environments/environment';
 export class HomeService {
   http = inject(HttpClient);
   baseUrl = environment.baseUrl;
-  getHomoData() {
-    return this.http.get<HomeApiResponse>(this.baseUrl + "Book");
+  getHomoData(Page: number, RecordsPerPage: number) {
+    return this.http.get<HomeApiResponse>(this.baseUrl + "Book?Page=" + Page + '&RecordsPerPage=' + RecordsPerPage, { observe: 'response'});
   }
-  getHomeSeach(search:string){
-    return this.http.get<HomeApiResponse>(this.baseUrl + 'Book/search' + (search === '' ? '' : '?search=' + search ));
+  getHomeSeach(search:string, Page: number, RecordsPerPage: number){
+    return this.http.get<HomeApiResponse>(this.baseUrl + 'Book/search?search=' + search + "&Page=" + Page + '&RecordsPerPage=' + RecordsPerPage, { observe: 'response'});
+    //return this.http.get<HomeApiResponse>(this.baseUrl + 'Book/search' + (search === '' ? '' : '?search=' + search ) + '', { observe: 'response'});
     }
 }

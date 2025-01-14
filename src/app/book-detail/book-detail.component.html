@@ -29,7 +29,7 @@
           </div>
         </div>
       </div>
-      <div class="container-buttom">
+      <div class="container-button">
         @if(authService.getIsLoggedIn() && (authService.getRole() ===
         'Administrator' || authService.getRole() === 'Librarian')){
         <button mat-flat-button [routerLink]="'/book-register/' + book.id">

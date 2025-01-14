@@ -1,1 +1,70 @@
-<p>book-register works!</p>
+<div class="page-container">
+  <app-logged-header></app-logged-header>
+  <div class="content-container">
+    <div class="card box-shadow">
+      <div class="title-container">
+        @if(idBook != ''){
+        <span>EDITAR LIBRO</span>
+        } @else {
+        <span>GUARDAR LIBRO</span>
+        }
+      </div>
+      <form [formGroup]="bookRegister">
+        <mat-form-field class="txtdata" appearance="outline">
+          <mat-label>Titulo</mat-label>
+          <input matInput type="text" formControlName="Name" />
+          @if(bookRegister.controls.Name.hasError("required")){
+          <mat-error> Titulo es requerido </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="txtdata" appearance="outline">
+          <mat-label>Autor</mat-label>
+          <input matInput type="text" formControlName="Author" />
+          @if(bookRegister.controls.Author.hasError("required")){
+          <mat-error> Autor es requerido </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="txtdata" appearance="outline">
+          <mat-label>ISBN</mat-label>
+          <input matInput type="text" formControlName="ISBN" />
+          @if(bookRegister.controls.ISBN.hasError("required")){
+          <mat-error> ISBN es requerido </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="txtdata" appearance="outline">
+          <mat-label>Editorial</mat-label>
+          <input matInput type="text" formControlName="Editorial" />
+          @if(bookRegister.controls.Editorial.hasError("required")){
+          <mat-error> Editorial es requerido </mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="txtSynopsis" appearance="outline">
+          <mat-label>Descripción</mat-label>
+          <textarea
+            matInput
+            placeholder="Descripción del libro..."
+            formControlName="Synopsis"
+            rows="15"
+          ></textarea>
+          @if(bookRegister.controls.Synopsis.hasError("required")){
+          <mat-error> Descripción es requerido </mat-error>
+          }
+        </mat-form-field>
+        <mat-label>Imagen del libro</mat-label>
+        <input
+          type="file"
+          formControlName="Imagen"
+          (change)="onFileSelected($event)"
+        />
+        <button
+          mat-flat-button
+          (click)="SaveBook()"
+          [disabled]="bookRegister.invalid"
+        >
+          Guardar
+        </button>
+      </form>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

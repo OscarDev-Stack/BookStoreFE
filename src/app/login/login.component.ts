@@ -31,7 +31,6 @@ export class LoginComponent {
     const password = this.loginForm.controls.password.value!;
 
     this.authService.login(email, password).subscribe((response) => {
-      console.log(response);
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('tokenExpiration', response.data.expirationDate);
       this.authService.decodeToken();

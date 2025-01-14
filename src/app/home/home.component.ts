@@ -11,10 +11,11 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeHeaderService } from './home-header/home-header.service';
 import { HomeHeaderComponent } from "./home-header/home-header.component";
 import { RouterLink } from '@angular/router';
+import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
-  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, HomeHeaderComponent, RouterLink],
+  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, HomeHeaderComponent, RouterLink, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -32,9 +33,21 @@ export class HomeComponent implements OnInit {
   searchBook:string = '';
   homeheaderservice = inject(HomeHeaderService);
 
+  length = 50;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions = [5, 10, 25];
+
+  hidePageSize = false;
+  showPageSizeOptions = true;
+  showFirstLastButtons = true;
+  disabled = false;
+
   ngOnInit(){
-    this.homeService.getHomoData().subscribe((response) => {
-      this.books = response.data;
+    
+    this.homeService.getHomoData((this.pageIndex + 1), this.pageSize).subscribe((response) => {
+      this.books = response.body?.data || [];
+      this.length = Number(response.headers.get('x-total'));
      } );
 
      let pruebaselect: customer = {
@@ -74,10 +87,37 @@ export class HomeComponent implements OnInit {
         (customer) => customer.id === this.searchcustomer);
     }
     filterBook(){
-      this.homeService.getHomeSeach(this.searchBook).subscribe((response) => {
+      this.homeService.getHomeSeach(this.searchBook, (this.pageIndex + 1), this.pageSize).subscribe((response) => {
         console.log(this.searchBook);
-        this.books = response.data;
+        this.books = response.body?.data || [];
+        this.length = Number(response.headers.get('x-total'));
+        this.pageIndex = 0;
        } );
+    }
+
+  
+
+  pageEvent: PageEvent | undefined;
+
+    handlePageEvent(e: PageEvent) {
+      //console.log('length' + e.length + ' pagesize ' + e.pageSize + ' pageindex ' + e.pageIndex);
+      this.pageEvent = e;
+      this.length = e.length;
+      this.pageSize = e.pageSize;
+      this.pageIndex = e.pageIndex;
+      if(this.searchBook != ''){
+        this.homeService.getHomeSeach(this.searchBook, (e.pageIndex + 1), e.pageSize).subscribe((response) => {
+          console.log(this.searchBook);
+          this.books = response.body?.data || [];
+          this.length = Number(response.headers.get('x-total'));
+         });
+      }
+      else {
+        this.homeService.getHomoData((e.pageIndex + 1), e.pageSize).subscribe((response) => {
+          this.books = response.body?.data || [];
+          this.length = Number(response.headers.get('x-total'));
+         } );
+      }
     }
   
 }

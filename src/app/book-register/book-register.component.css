@@ -1,0 +1,42 @@
+.content-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  & .card {
+    background-color: var(--secondary-color);
+    border-radius: 0.4rem;
+    width: 40vw;
+    & .title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 40px;
+      margin-bottom: 40px;
+      & span {
+        color: var(--primary-color);
+        font-weight: 500;
+      }
+    }
+    & form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      & .txtdata {
+        width: 80%;
+      }
+      & .txtSynopsis {
+        width: 80%;
+        & textarea {
+          height: auto;
+          max-height: 500px;
+          overflow-y: auto;
+        }
+      }
+      & button {
+        margin-top: 15px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+}
