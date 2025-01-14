@@ -15,7 +15,7 @@ export class BookCardComponent implements OnInit {
   }
 
   ImageError(){
-    this.data.imageUrl = '/images/librogenerico.jpg';
+    this.data.imageUrl = './images/librogenerico.jpg';
   }
 
 }

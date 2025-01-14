@@ -27,7 +27,7 @@ export class BookDetailComponent implements OnInit {
   }
 
   ImageError(){
-    this.book.imageUrl = '/images/librogenerico.jpg';
+    this.book.imageUrl = './images/librogenerico.jpg';
   }
 
 }
