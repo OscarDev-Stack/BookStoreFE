@@ -1,5 +1,5 @@
 <div class="page-container">
-  <app-logged-header></app-logged-header>
+  <app-home-header></app-home-header>
   <div class="container">
     <div class="prubaselect hidden">
       <mat-form-field>
@@ -13,7 +13,11 @@
       </mat-form-field>
     </div>
     <div class="container-book">
-      <app-book-card *ngFor="let book of books" [data]="book"></app-book-card>
+      <app-book-card
+        *ngFor="let book of books"
+        [data]="book"
+        [routerLink]="'/book-detail/' + book.id"
+      ></app-book-card>
       <h3 *ngIf="books.length === 0">No se encontraron libros.</h3>
     </div>
   </div>

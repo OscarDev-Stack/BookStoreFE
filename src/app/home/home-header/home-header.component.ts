@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import { HomeHeaderService } from './home-header.service';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-home-header',
@@ -14,6 +15,7 @@ import { RouterLink } from '@angular/router';
 })
 export class HomeHeaderComponent {
   searchControl = new FormControl();
+  authService = inject(AuthService);
   homeHeaderService = inject(HomeHeaderService);
   constructor(){
     this.homeHeaderService.searchValue$ = this.searchControl.valueChanges;

@@ -9,11 +9,12 @@ import {MatSelectModule} from '@angular/material/select';
 import { customer } from '../shared/models/customer.model';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeHeaderService } from './home-header/home-header.service';
-import { LoggedHeaderComponent } from "../shared/components/logged-header/logged-header.component";
+import { HomeHeaderComponent } from "./home-header/home-header.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, LoggedHeaderComponent],
+  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, HomeHeaderComponent, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

@@ -1,15 +1,8 @@
 <header class="box-shadow">
   <div class="container">
-    <div class="logo-container">
+    <div class="logo-container" routerLink="/">
       <img src="images/book-logo.png" alt="logo" />
       <h1>Biblioteca</h1>
-    </div>
-    <div class="search-container">
-      <input
-        type="text"
-        placeholder="Buscar por Título, Autor, Editorial o ISBN."
-        [formControl]="searchControl"
-      />
     </div>
     <div class="menu-container">
       @if(authService.getIsLoggedIn()){

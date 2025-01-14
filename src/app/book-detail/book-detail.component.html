@@ -1,1 +1,46 @@
-<p>book-detail works!</p>
+<div class="page-container">
+  <app-logged-header></app-logged-header>
+  <div class="container">
+    <div class="container-book box-shadow">
+      <div class="container-img">
+        <img [src]="book.imageUrl" alt="book" (error)="ImageError()" />
+      </div>
+      <div class="container-data">
+        <div class="container-gnl">
+          <div>
+            <span class="txt-header">Titulo: </span><span>{{ book.name }}</span>
+          </div>
+          <div>
+            <span class="txt-header">Autor: </span
+            ><span>{{ book.author }}</span>
+          </div>
+          <div>
+            <span class="txt-header">Editorial: </span
+            ><span>{{ book.editorial }}</span>
+          </div>
+          <div>
+            <span class="txt-header">ISB: </span><span>{{ book.isbn }}</span>
+          </div>
+        </div>
+        <div class="container-detail">
+          <div>
+            <span class="txt-header">Descripción: </span
+            ><span>{{ book.synopsis }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="container-buttom">
+        @if(authService.getIsLoggedIn() && (authService.getRole() ===
+        'Administrator' || authService.getRole() === 'Librarian')){
+        <button mat-flat-button [routerLink]="'/book-register/' + book.id">
+          Editar
+        </button>
+        } @if(authService.getIsLoggedIn() && authService.getRole() ===
+        'Administrator' ){
+        <button class="btn-eliminar" mat-flat-button>Eliminar</button>
+        }
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

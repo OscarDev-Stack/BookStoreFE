@@ -21,6 +21,11 @@ export const routes: Routes = [
         component: CustomerRegisterComponent
     },
     {
+        path: 'book-register/:id',
+        pathMatch: 'full',
+        component: BookRegisterComponent
+    },
+    {
         path: 'book-register',
         component: BookRegisterComponent
     },
@@ -29,7 +34,8 @@ export const routes: Routes = [
         component: OrderComponent
     },
     {
-        path: 'book-detail',
+        path: 'book-detail/:id',
+        pathMatch: 'full',
         component: BookDetailComponent
     },
     {

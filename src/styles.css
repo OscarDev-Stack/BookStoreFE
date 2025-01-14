@@ -2,9 +2,22 @@
 @import "../public/styles/colors.css";
 @import "../public/styles/material.css";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-.box-shadow{
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.75);
+.box-shadow {
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.75);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }

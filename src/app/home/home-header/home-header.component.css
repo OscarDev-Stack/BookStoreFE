@@ -1,52 +1,58 @@
-header{
-    background-color: var(--color-primary);
-    height: 7vh;
+header {
+  background-color: var(--color-primary);
+  height: 7vh;
+  display: flex;
+  justify-content: center;
+  & .container {
+    width: 75vw;
     display: flex;
-    justify-content: center;
-    & .container {
-        width: 75vw;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        & .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            & img {
-                height: 6vmin;
-                width: 6vmin;
-            }
-            & h1 {
-                font-size: 3vmin;
-                color: var(--color-secondary);
-                font-weight: 500;
-            }
-        }
-        & .search-container{
-            width: 30vw;
-            & input {
-                width: 28vw;
-                height: 4vmin;
-                border-radius: 0.4rem;
-                padding-left: 1rem;
-            }
-            input::placeholder { 
-                text-align: center;
-            }
-        }
-        & .menu-container{
-            display: flex;
-            justify-content: center;
-            & .btn-login {
-                /* background-color: var(--color-secondary); */
-                color: var(--color-secondary);
-                /*width: 4vmin;
-                height: 4vmin;*/
-            }
-            & .btn-menu{
-                color: var(--color-secondary);
-            }
-        }
+    justify-content: space-between;
+    align-items: center;
+    & .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      & img {
+        height: 6vmin;
+        width: 6vmin;
+      }
+      & h1 {
+        font-size: 3vmin;
+        color: var(--color-secondary);
+        font-weight: 500;
+      }
     }
+    & .search-container {
+      width: 30vw;
+      & input {
+        width: 28vw;
+        height: 4vmin;
+        border-radius: 0.4rem;
+        padding-left: 1rem;
+      }
+      input::placeholder {
+        text-align: center;
+      }
+    }
+    & .menu-container {
+      display: flex;
+      justify-content: center;
+      & .name-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: var(--color-secondary);
+      }
+      & .btn-login {
+        /* background-color: var(--color-secondary); */
+        color: var(--color-secondary);
+        /*width: 4vmin;
+                height: 4vmin;*/
+      }
+      & .btn-menu {
+        color: var(--color-secondary);
+      }
+    }
+  }
 }
