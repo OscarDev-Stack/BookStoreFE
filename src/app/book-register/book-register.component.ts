@@ -6,12 +6,12 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../shared/services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BookService } from '../shared/services/book.service';
 
 @Component({
   selector: 'app-book-register',
-  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './book-register.component.html',
   styleUrl: './book-register.component.css'
 })
@@ -28,7 +28,7 @@ export class BookRegisterComponent implements OnInit {
     ISBN: new FormControl('', [Validators.required]),
     Editorial: new FormControl('', [Validators.required]),
     Synopsis: new FormControl('', [Validators.required]),
-    Imagen: new FormControl('')
+    Image: new FormControl('')
   });
   activateRoute = inject(ActivatedRoute);
   
@@ -43,7 +43,7 @@ export class BookRegisterComponent implements OnInit {
           ISBN: response.data.isbn, 
           Editorial: response.data.editorial, 
           Synopsis: response.data.synopsis,
-          Imagen: '',
+          Image: '',
         });
       });
     }
@@ -68,7 +68,7 @@ export class BookRegisterComponent implements OnInit {
     formData.append('Editorial', this.bookRegister.controls.Editorial.value!); 
     formData.append('Synopsis', this.bookRegister.controls.Synopsis.value!); 
     if (this.selectedFile) { 
-      formData.append('Imagen', this.selectedFile); 
+      formData.append('Image', this.selectedFile); 
     } 
     
     if(this.idBook == '') {
@@ -76,6 +76,12 @@ export class BookRegisterComponent implements OnInit {
       alert('Libro guardado correctamen!!!');
       this.router.navigate(['/book-detail/' + response.data]);
      });
+    }
+    else {
+      this.bookService.putBook(formData, this.idBook).subscribe((response) => {
+        alert('Libro actualizado correctamen!!!');
+        this.router.navigate(['/book-detail/' + this.idBook]);
+       });
     }
      
   }

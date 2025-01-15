@@ -28,6 +28,23 @@ export class BookService {
         return EMPTY})
       );
     }
+
+    putBook(book: FormData, idBook: string){
+      return this.http.put<BookPostApiResponse>(this.baseUrl + 'Book/' + idBook, book)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+        alert('Error ' + error.error.errorMessage)
+        return EMPTY})
+      );
+    }
   
+    deleteBook(idBook: string){
+      return this.http.delete<BookPostApiResponse>(this.baseUrl + 'Book/' + idBook)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+        alert('Error ' + error.error.errorMessage)
+        return EMPTY})
+      );
+    }
 
 }

@@ -53,16 +53,25 @@
         <mat-label>Imagen del libro</mat-label>
         <input
           type="file"
-          formControlName="Imagen"
+          formControlName="Image"
           (change)="onFileSelected($event)"
         />
-        <button
-          mat-flat-button
-          (click)="SaveBook()"
-          [disabled]="bookRegister.invalid"
-        >
-          Guardar
-        </button>
+        <div class="container-button">
+          <button
+            mat-flat-button
+            class="btn-regresar"
+            [routerLink]="'/book-detail/' + idBook"
+          >
+            Regresar
+          </button>
+          <button
+            mat-flat-button
+            (click)="SaveBook()"
+            [disabled]="bookRegister.invalid"
+          >
+            Guardar
+          </button>
+        </div>
       </form>
     </div>
   </div>

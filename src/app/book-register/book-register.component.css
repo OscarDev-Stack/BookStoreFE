@@ -6,6 +6,8 @@
     background-color: var(--secondary-color);
     border-radius: 0.4rem;
     width: 40vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
     & .title-container {
       display: flex;
       flex-direction: column;
@@ -33,9 +35,12 @@
           overflow-y: auto;
         }
       }
-      & button {
+      & .container-button {
+        display: flex;
         margin-top: 15px;
         margin-bottom: 25px;
+        flex-direction: row;
+        gap: 10px;
       }
     }
   }

@@ -21,3 +21,7 @@ body {
   justify-content: space-between;
   height: 100%;
 }
+
+.btn-regresar {
+  background-color: #999898;
+}

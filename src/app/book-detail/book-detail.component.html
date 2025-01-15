@@ -30,6 +30,9 @@
         </div>
       </div>
       <div class="container-button">
+        <button class="btn-regresar" mat-flat-button routerLink="/">
+          Regresar
+        </button>
         @if(authService.getIsLoggedIn() && (authService.getRole() ===
         'Administrator' || authService.getRole() === 'Librarian')){
         <button mat-flat-button [routerLink]="'/book-register/' + book.id">
@@ -37,7 +40,9 @@
         </button>
         } @if(authService.getIsLoggedIn() && authService.getRole() ===
         'Administrator' ){
-        <button class="btn-eliminar" mat-flat-button>Eliminar</button>
+        <button class="btn-eliminar" mat-flat-button (click)="deleteBook()">
+          Eliminar
+        </button>
         }
       </div>
     </div>
