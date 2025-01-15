@@ -6,6 +6,7 @@ import { BookRegisterComponent } from './book-register/book-register.component';
 import { OrderComponent } from './order/order.component';
 import { BookDetailComponent } from './book-detail/book-detail.component';
 import { ReportsComponent } from './reports/reports.component';
+import { CustomersComponent } from './customers/customers.component';
 
 export const routes: Routes = [
     {
@@ -41,5 +42,14 @@ export const routes: Routes = [
     {
         path: 'reports',
         component: ReportsComponent
+    },
+    {
+        path: 'customer-register/:id',
+        pathMatch: 'full',
+        component: CustomerRegisterComponent
+    },
+    {
+        path: 'customer',
+        component: CustomersComponent
     }
 ];

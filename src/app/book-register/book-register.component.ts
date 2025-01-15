@@ -5,13 +5,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { AuthService } from '../shared/services/auth.service';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../shared/services/book.service';
 
 @Component({
   selector: 'app-book-register',
-  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, RouterLink],
+  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
   templateUrl: './book-register.component.html',
   styleUrl: './book-register.component.css'
 })
@@ -19,7 +18,6 @@ export class BookRegisterComponent implements OnInit {
   
   idBook = '';
   selectedFile: File | null = null
-  authService = inject(AuthService);
   router = inject(Router);
   bookService = inject(BookService);
   bookRegister = new FormGroup({
@@ -32,9 +30,8 @@ export class BookRegisterComponent implements OnInit {
   });
   activateRoute = inject(ActivatedRoute);
   
-  ngOnInit(): void {
+  ngOnInit() {
     this.idBook = this.activateRoute.snapshot.params['id'] ?? '';
-    console.log(this.idBook);
     if(this.idBook != '') {
       this.bookService.getBook(this.idBook).subscribe((response) => {
         this.bookRegister.setValue({
@@ -52,7 +49,6 @@ export class BookRegisterComponent implements OnInit {
   onFileSelected(event: Event) { 
     const input = event.target as HTMLInputElement; 
     if (input.files && input.files.length > 0) { 
-      console.log(input.files[0]);
       this.selectedFile = input.files[0]; 
     }
   }
@@ -83,6 +79,10 @@ export class BookRegisterComponent implements OnInit {
         this.router.navigate(['/book-detail/' + this.idBook]);
        });
     }
-     
   }
+
+  navigateBack() { 
+    this.router.navigate(['/book-detail', this.idBook]); 
+  }
+  
 }

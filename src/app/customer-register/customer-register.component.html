@@ -3,7 +3,11 @@
   <div class="content-container">
     <div class="card box-shadow">
       <div class="title-container">
-        <span>NUEVO CLIENTE</span>
+        @if(idCustomer != ''){
+        <span>EDITAR CLIENTE</span>
+        } @else {
+        <span>GUARDAR CLIENTE</span>
+        }
       </div>
       <form [formGroup]="customerRegister">
         <mat-form-field class="txtdata" appearance="outline">
@@ -34,13 +38,18 @@
           <mat-error> Edad es requerido </mat-error>
           }
         </mat-form-field>
-        <button
-          mat-flat-button
-          (click)="createCustomer()"
-          [disabled]="customerRegister.invalid"
-        >
-          Guardar
-        </button>
+        <div class="container-button">
+          <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
+            Regresar
+          </button>
+          <button
+            mat-flat-button
+            (click)="SaveCustomer()"
+            [disabled]="customerRegister.invalid"
+          >
+            Guardar
+          </button>
+        </div>
       </form>
     </div>
   </div>

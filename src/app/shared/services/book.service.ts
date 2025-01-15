@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { BookApiResponse } from '../../book-detail/book-model';
+import { BookApiResp, BookApiResponse, BookPostApiResponse } from '../models/book-api-model';
 import { catchError, EMPTY } from 'rxjs';
-import { BookPostApiResponse } from '../../book-register/book-post-model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,7 @@ export class BookService {
     }
 
     putBook(book: FormData, idBook: string){
-      return this.http.put<BookPostApiResponse>(this.baseUrl + 'Book/' + idBook, book)
+      return this.http.put<BookApiResp>(this.baseUrl + 'Book/' + idBook, book)
       .pipe(
         catchError((error: HttpErrorResponse) => {
         alert('Error ' + error.error.errorMessage)
@@ -39,7 +39,7 @@ export class BookService {
     }
   
     deleteBook(idBook: string){
-      return this.http.delete<BookPostApiResponse>(this.baseUrl + 'Book/' + idBook)
+      return this.http.delete<BookApiResp>(this.baseUrl + 'Book/' + idBook)
       .pipe(
         catchError((error: HttpErrorResponse) => {
         alert('Error ' + error.error.errorMessage)

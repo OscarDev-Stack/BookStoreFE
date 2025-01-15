@@ -31,8 +31,12 @@
         & .txtdata {
           width: 80%;
         }
-        & button {
+        & .container-button {
+          display: flex;
+          margin-top: 15px;
           margin-bottom: 25px;
+          flex-direction: row;
+          gap: 10px;
         }
       }
     }

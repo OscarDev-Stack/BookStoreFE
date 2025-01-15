@@ -57,11 +57,7 @@
           (change)="onFileSelected($event)"
         />
         <div class="container-button">
-          <button
-            mat-flat-button
-            class="btn-regresar"
-            [routerLink]="'/book-detail/' + idBook"
-          >
+          <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
             Regresar
           </button>
           <button

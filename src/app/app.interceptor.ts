@@ -12,7 +12,7 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
   if (token) {
     clonedRequest = req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + token),
+      headers: req.headers.set('Authorization', 'Bearer ' + token).set('Content-Type','application/json'),
     });
   }
   return next(clonedRequest);
