@@ -12,7 +12,7 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
   if (token) {
     clonedRequest = req.clone({
-      headers: req.headers.set('Authorization', 'Bearer ' + token).set('Content-Type','application/json'),
+      headers: req.headers.set('Authorization', 'Bearer ' + token),
     });
   }
   return next(clonedRequest);
@@ -26,10 +26,6 @@ export const tokenExpiredInterceptor: HttpInterceptorFn = (req, next) => {
     if (currentDate > expirationDate) {
       localStorage.clear();
       alert("Sesión expirada");
-      // inject(NotificationsService).warn(
-      //   'Sesión expirada',
-      //   'Por favor inicia sesión de nuevo'
-      // );
       inject(Router).navigate(['/login']);
       return EMPTY;
     }

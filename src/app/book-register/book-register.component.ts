@@ -84,5 +84,4 @@ export class BookRegisterComponent implements OnInit {
   navigateBack() { 
     this.router.navigate(['/book-detail', this.idBook]); 
   }
-  
 }

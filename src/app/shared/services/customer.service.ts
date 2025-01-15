@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { CustomerApiResp, CustomerApiResponse, CustomerPostApiResponse, CustomersApiResponse } from '../models/customer-api-model';
@@ -22,13 +22,14 @@ export class CustomerService {
       );
     }
     postCustomer(firstName: string, lastName: string, dni: string, edad: number ){
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer your-token-here'});
       return this.http.post<CustomerPostApiResponse>(this.baseUrl + 'Customer',{
         firstName,
         lastName,
         dni,
         edad,
         status: true
-      }).pipe(
+      }, { headers }).pipe(
         catchError((error: HttpErrorResponse) => {
           alert('Error ' + error.error.errorMessage)
           //this.router.navigate(['/']); 
@@ -44,13 +45,14 @@ export class CustomerService {
       );
     }
     putCustomer(firstName: string, lastName: string, dni: string, edad: number, idCustomer: string){
+      const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer your-token-here'});
       return this.http.put<CustomerApiResp>(this.baseUrl + 'Customer/' + idCustomer, {
         firstName,
         lastName,
         dni,
         edad,
         status: true
-      }).pipe(
+      }, { headers }).pipe(
         catchError((error: HttpErrorResponse) => {
           alert('Error ' + error.error.errorMessage)
           //this.router.navigate(['/']); 
