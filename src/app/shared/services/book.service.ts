@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { BookApiResp, BookApiResponse, BookPostApiResponse } from '../models/book-api-model';
+import { BookApiResp, BookApiResponse, BookPostApiResponse } from '../models/book-api.model';
 import { catchError, EMPTY } from 'rxjs';
 
 

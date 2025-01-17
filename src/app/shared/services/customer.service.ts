@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
-import { CustomerApiResp, CustomerApiResponse, CustomerPostApiResponse, CustomersApiResponse } from '../models/customer-api-model';
+import { CustomerApiResp, CustomerApiResponse, CustomerPostApiResponse, CustomersApiResponse } from '../models/customer-api.model';
 import { catchError, EMPTY } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -21,15 +21,8 @@ export class CustomerService {
           return EMPTY})
       );
     }
-    postCustomer(firstName: string, lastName: string, dni: string, edad: number ){
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer your-token-here'});
-      return this.http.post<CustomerPostApiResponse>(this.baseUrl + 'Customer',{
-        firstName,
-        lastName,
-        dni,
-        edad,
-        status: true
-      }, { headers }).pipe(
+    postCustomer(customer: FormData ){
+      return this.http.post<CustomerPostApiResponse>(this.baseUrl + 'Customer', customer).pipe(
         catchError((error: HttpErrorResponse) => {
           alert('Error ' + error.error.errorMessage)
           //this.router.navigate(['/']); 
@@ -44,15 +37,8 @@ export class CustomerService {
           return EMPTY})
       );
     }
-    putCustomer(firstName: string, lastName: string, dni: string, edad: number, idCustomer: string){
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': 'Bearer your-token-here'});
-      return this.http.put<CustomerApiResp>(this.baseUrl + 'Customer/' + idCustomer, {
-        firstName,
-        lastName,
-        dni,
-        edad,
-        status: true
-      }, { headers }).pipe(
+    putCustomer(customer: FormData, idCustomer: string){
+      return this.http.put<CustomerApiResp>(this.baseUrl + 'Customer/' + idCustomer, customer).pipe(
         catchError((error: HttpErrorResponse) => {
           alert('Error ' + error.error.errorMessage)
           //this.router.navigate(['/']); 

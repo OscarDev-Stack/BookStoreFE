@@ -1,0 +1,143 @@
+<div class="page-container">
+  <app-logged-header></app-logged-header>
+  <div class="container-order-full">
+    <div class="container">
+      <div class="card box-shadow">
+        <div class="container-order">
+          <div class="container-title">
+            <h3 class="title">Pedidos</h3>
+          </div>
+          <table mat-table [dataSource]="dataSource" class="table-order">
+            <ng-container matColumnDef="operationNumbre">
+              <th mat-header-cell *matHeaderCellDef>Numero operación</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.operationNumbre }}
+              </td> </ng-container
+            ><ng-container matColumnDef="finalized">
+              <th mat-header-cell *matHeaderCellDef>Estatus</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.finalized ? "Finalizado" : "Pendiente" }}
+              </td> </ng-container
+            ><ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Nombre</th>
+              <td mat-cell *matCellDef="let element">
+                {{
+                  element.customer.firstName + " " + element.customer.lastName
+                }}
+              </td> </ng-container
+            ><ng-container matColumnDef="dni">
+              <th mat-header-cell *matHeaderCellDef>DNI</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.customer.dni }}
+              </td> </ng-container
+            ><ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-flat-button (click)="DetailOrder(element.id)">
+                  <mat-icon>visibility</mat-icon>
+                  <span>Ver</span>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          @if(dataSource.data.length === 0){
+          <div class="container-text">
+            <h3>No hay pedidos disponibles.</h3>
+          </div>
+          }
+        </div>
+        <div class="container-button">
+          <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
+            Regresar
+          </button>
+        </div>
+      </div>
+      <div class="container-order-detail box-shadow">
+        <div class="container-order-title">
+          <div class="container-title">
+            @if(orderId > 0) {
+            <h3>Datos del pedido</h3>
+            } @else {
+            <h3>Seleccione algun pedido.</h3>
+            }
+          </div>
+          @if(orderId > 0){
+          <div class="container-data-order">
+            <div class="container-order">
+              <span>
+                <span class="spanHeader">Pedido numero: </span
+                >{{ operationNumbre }}</span
+              >
+              <span
+                ><span class="spanHeader">Estatus: </span>{{ finalized }}</span
+              >
+              <span
+                ><span class="spanHeader">Fecha de inicio: </span
+                >{{ startDate }}</span
+              >
+              <span
+                ><span class="spanHeader">Hora de inicio: </span
+                >{{ startTime }}</span
+              >
+              @if(finalizedOk){
+              <span
+                ><span class="spanHeader">Fecha de termino: </span
+                >{{ endDate }}</span
+              >
+              <span
+                ><span class="spanHeader">Hora de termino: </span
+                >{{ endTime }}</span
+              >
+              }
+            </div>
+            <div class="container-order">
+              <span
+                ><span class="spanHeader">Nombre Completo: </span
+                >{{ fullName }}</span
+              >
+              <span><span class="spanHeader">DNI: </span>{{ dni }}</span>
+              <span><span class="spanHeader">Edad: </span>{{ edad }}</span>
+            </div>
+          </div>
+          <table mat-table [dataSource]="dataSourceBook" class="table-order">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Titulo</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </td> </ng-container
+            ><ng-container matColumnDef="author">
+              <th mat-header-cell *matHeaderCellDef>Autor</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.author }}
+              </td> </ng-container
+            ><ng-container matColumnDef="isbn">
+              <th mat-header-cell *matHeaderCellDef>ISBN</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.isbn }}
+              </td> </ng-container
+            ><ng-container matColumnDef="editorial">
+              <th mat-header-cell *matHeaderCellDef>Editorial</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.editorial }}
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumnsBook"></tr>
+            <tr
+              mat-row
+              *matRowDef="let row; columns: displayedColumnsBook"
+            ></tr>
+          </table>
+          }
+        </div>
+        <div class="container-button">
+          @if(orderId > 0 && !finalizedOk){
+          <button mat-flat-button (click)="Finalize()">Finalizar</button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

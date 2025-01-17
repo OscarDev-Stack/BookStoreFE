@@ -1,1 +1,178 @@
-<p>order works!</p>
+<div class="page-container">
+  <app-logged-header></app-logged-header>
+  <div class="container-order">
+    <div class="container">
+      <div class="card box-shadow">
+        <div class="container-customer">
+          <div class="container-slc">
+            <mat-form-field class="slc-customer">
+              <mat-label>Cliente</mat-label>
+              <mat-select [formControl]="selectForm">
+                <mat-option [value]="0">Seleccione cliente</mat-option>
+                <mat-option
+                  *ngFor="let custom of customers"
+                  [value]="custom.id"
+                  >{{
+                    custom.firstName +
+                      " " +
+                      custom.lastName +
+                      " - " +
+                      custom.dni
+                  }}</mat-option
+                >
+              </mat-select>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="container-book">
+          <div class="container-title">
+            <span class="title">Libros</span>
+            <input
+              type="text"
+              placeholder="Buscar por Título, Autor, Editorial o ISBN."
+              [formControl]="searchControl"
+            />
+          </div>
+          <table mat-table [dataSource]="dataSource" class="table-book">
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef>Titulo</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.name }}
+              </td> </ng-container
+            ><ng-container matColumnDef="author">
+              <th mat-header-cell *matHeaderCellDef>Autor</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.author }}
+              </td> </ng-container
+            ><ng-container matColumnDef="isbn">
+              <th mat-header-cell *matHeaderCellDef>ISBN</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.isbn }}
+              </td> </ng-container
+            ><ng-container matColumnDef="editorial">
+              <th mat-header-cell *matHeaderCellDef>Editorial</th>
+              <td mat-cell *matCellDef="let element">
+                {{ element.editorial }}
+              </td> </ng-container
+            ><ng-container matColumnDef="acciones">
+              <th mat-header-cell *matHeaderCellDef>Acciones</th>
+              <td mat-cell *matCellDef="let element">
+                <button
+                  mat-flat-button
+                  class="btn-add"
+                  (click)="addBook(element.id)"
+                >
+                  <mat-icon>add</mat-icon>
+                  <span>Agregar</span>
+                </button>
+              </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          </table>
+          @if(dataSource.data.length === 0){
+          <div class="container-text">
+            <h3>No hay libros disponibles.</h3>
+          </div>
+          }
+          <mat-paginator
+            #paginator
+            class="demo-paginator"
+            (page)="handlePageEvent($event)"
+            [length]="length"
+            [pageSize]="pageSize"
+            [disabled]="disabled"
+            [showFirstLastButtons]="showFirstLastButtons"
+            [pageSizeOptions]="showPageSizeOptions ? pageSizeOptions : []"
+            [hidePageSize]="hidePageSize"
+            [pageIndex]="pageIndex"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+        </div>
+      </div>
+      <div class="container-book-list box-shadow">
+        <div class="container-customer">
+          @if(idCustomer !== 0){
+          <div class="container-title">
+            <h3>Datos del cliente</h3>
+          </div>
+          <div class="container-data-customer">
+            <div class="data-customer">
+              <span
+                ><span class="span-header">Nombre: </span>
+                {{ customer.firstName }}</span
+              >
+              <span
+                ><span class="span-header">Apellido: </span>
+                {{ customer.lastName }}</span
+              >
+              <span
+                ><span class="span-header">DNI: </span> {{ customer.dni }}</span
+              >
+              <span
+                ><span class="span-header">Edad:</span>
+                {{ customer.edad }}</span
+              >
+            </div>
+          </div>
+          }
+        </div>
+        <div class="container-title">
+          <h3>Lista de libros</h3>
+        </div>
+        <table mat-table [dataSource]="dataSourceOrder" class="table-book">
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Titulo</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.name }}
+            </td> </ng-container
+          ><ng-container matColumnDef="author">
+            <th mat-header-cell *matHeaderCellDef>Autor</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.author }}
+            </td> </ng-container
+          ><ng-container matColumnDef="isbn">
+            <th mat-header-cell *matHeaderCellDef>ISBN</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.isbn }}
+            </td> </ng-container
+          ><ng-container matColumnDef="editorial">
+            <th mat-header-cell *matHeaderCellDef>Editorial</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.editorial }}
+            </td> </ng-container
+          ><ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef>Acciones</th>
+            <td mat-cell *matCellDef="let element">
+              <button
+                mat-flat-button
+                class="btn-remove"
+                (click)="removeBookOrder(element.id)"
+              >
+                <mat-icon>delete</mat-icon>
+                <span>Eliminar</span>
+              </button>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+        @if(dataSourceOrder.data.length === 0){
+        <div class="container-text">
+          <h3>No hay libros agregados.</h3>
+        </div>
+        }
+        <div class="container-button">
+          <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
+            Regresar
+          </button>
+          @if(dataSourceOrder.data.length > 0 && idCustomer > 0){
+          <button mat-flat-button (click)="SaveOrder()">Guardar</button>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

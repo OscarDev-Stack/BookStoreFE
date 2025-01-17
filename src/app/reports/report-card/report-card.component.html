@@ -1,0 +1,69 @@
+<div class="container-order-detail">
+  <div class="container-order-title">
+    <div class="container-title">
+      <h3>Datos del pedido</h3>
+    </div>
+    <div class="container-data-order">
+      <div class="container-order">
+        <span>
+          <span class="spanHeader">Pedido numero: </span
+          >{{ data.operationNumbre }}</span
+        >
+        <span
+          ><span class="spanHeader">Estatus: </span>{{ data.finalized }}</span
+        >
+        <span
+          ><span class="spanHeader">Fecha de inicio: </span
+          >{{ data.dateStar }}</span
+        >
+        <span
+          ><span class="spanHeader">Hora de inicio: </span
+          >{{ data.timeStar }}</span
+        >
+        @if(data.finalized === 'Finalizado'){
+        <span
+          ><span class="spanHeader">Fecha de termino: </span
+          >{{ data.dateEnd }}</span
+        >
+        <span
+          ><span class="spanHeader">Hora de termino: </span
+          >{{ data.timeEnd }}</span
+        >
+        }
+      </div>
+      <div class="container-order">
+        <span
+          ><span class="spanHeader">Nombre Completo: </span
+          >{{ data.fullName }}</span
+        >
+        <span><span class="spanHeader">DNI: </span>{{ data.dni }}</span>
+        <span><span class="spanHeader">Edad: </span>{{ data.edad }}</span>
+      </div>
+    </div>
+    <table mat-table [dataSource]="dataSourceBook" class="table-order">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Titulo</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.name }}
+        </td> </ng-container
+      ><ng-container matColumnDef="author">
+        <th mat-header-cell *matHeaderCellDef>Autor</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.author }}
+        </td> </ng-container
+      ><ng-container matColumnDef="isbn">
+        <th mat-header-cell *matHeaderCellDef>ISBN</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.isbn }}
+        </td> </ng-container
+      ><ng-container matColumnDef="editorial">
+        <th mat-header-cell *matHeaderCellDef>Editorial</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.editorial }}
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumnsBook"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumnsBook"></tr>
+    </table>
+  </div>
+</div>

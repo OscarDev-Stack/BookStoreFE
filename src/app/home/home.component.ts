@@ -6,7 +6,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { HomeService } from './home.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-import { customer } from '../shared/models/customer.model';
+//import { customer } from '../shared/models/customer.model';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeHeaderService } from './home-header/home-header.service';
 import { HomeHeaderComponent } from "./home-header/home-header.component";
@@ -20,8 +20,8 @@ import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit {
-  lstCustomerOrigin: customer[] = [];
-  customer: customer[] = [];
+  // lstCustomerOrigin: customer[] = [];
+  // customer: customer[] = [];
   
   books: book[] = [];
 
@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   selectForm = new FormControl(0);
 
-  searchcustomer:number = 0;
+  //searchcustomer:number = 0;
   searchBook:string = '';
   homeheaderservice = inject(HomeHeaderService);
 
@@ -49,43 +49,13 @@ export class HomeComponent implements OnInit {
       this.books = response.body?.data || [];
       this.length = Number(response.headers.get('x-total'));
      } );
-
-     let pruebaselect: customer = {
-      id: 1,
-      firstName: 'Oscar',
-      lastName: 'Juarez',
-      dni: '12345678T',
-      edad: 32,
-      status: true
-    };
-    this.lstCustomerOrigin.push(pruebaselect);
-    pruebaselect = {
-      id: 2,
-      firstName: 'Sergio',
-      lastName: 'Juarez',
-      dni: '12342588T',
-      edad: 58,
-      status: true
-    };
-    this.lstCustomerOrigin.push(pruebaselect);
-
-    this.customer = this.lstCustomerOrigin;
-
-     this.selectForm.valueChanges.subscribe((value) => {
-        this.searchcustomer = value || 0;
-        this.filterCustomer();
-     })
-
+     
      this.homeheaderservice.searchValue$.subscribe((value) => {
         this.searchBook = value;
         this.filterBook();
      });
   }
-
-    filterCustomer(){
-      this.customer = this.searchcustomer === 0 ? this.lstCustomerOrigin : this.lstCustomerOrigin.filter(
-        (customer) => customer.id === this.searchcustomer);
-    }
+  
     filterBook(){
       this.homeService.getHomeSeach(this.searchBook, (this.pageIndex + 1), this.pageSize).subscribe((response) => {
         console.log(this.searchBook);
@@ -100,7 +70,6 @@ export class HomeComponent implements OnInit {
   pageEvent: PageEvent | undefined;
 
     handlePageEvent(e: PageEvent) {
-      //console.log('length' + e.length + ' pagesize ' + e.pageSize + ' pageindex ' + e.pageIndex);
       this.pageEvent = e;
       this.length = e.length;
       this.pageSize = e.pageSize;

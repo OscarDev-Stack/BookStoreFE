@@ -26,6 +26,7 @@ export class CustomersComponent implements OnInit {
    customerService = inject(CustomerService);
    searchControl = new FormControl();
    search$ = '';
+   countData = false;
 
    constructor(){
     
@@ -56,6 +57,7 @@ export class CustomersComponent implements OnInit {
 
   seachCustomer(value: string){
     this.customerService.getFullNameCustomer(value).subscribe((response) => {
+      
       this.dataSource = new MatTableDataSource(response.data);
     });
   }

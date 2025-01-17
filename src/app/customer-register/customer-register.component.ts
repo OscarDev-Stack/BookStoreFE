@@ -48,19 +48,21 @@ export class CustomerRegisterComponent implements OnInit {
         if (this.customerRegister.invalid) { 
           return; 
         } 
-        const firstName = this.customerRegister.controls.firstName.value!; 
-        const lastName = this.customerRegister.controls.lastName.value!; 
-        const dni = this.customerRegister.controls.dni.value!; 
-        const edad = Number(this.customerRegister.controls.edad.value!); 
+        const formData = new FormData(); 
+          formData.append('firstName', this.customerRegister.controls.firstName.value!); 
+          formData.append('lastName', this.customerRegister.controls.lastName.value!); 
+          formData.append('dni', this.customerRegister.controls.dni.value!); 
+          formData.append('edad', this.customerRegister.controls.edad.value!); 
         
         if(this.idCustomer == '') {
-         this.customerService.postCustomer(firstName, lastName, dni, edad).subscribe((response) => {
+          
+         this.customerService.postCustomer(formData).subscribe((response) => {
           alert('Cliente guardado correctamen!!!');
           this.router.navigate(['/customer']);
          });
         }
         else {
-          this.customerService.putCustomer(firstName, lastName, dni, edad, this.idCustomer).subscribe(() => {
+          this.customerService.putCustomer(formData, this.idCustomer).subscribe(() => {
             alert('Cliente actualizado correctamen!!!');
             this.router.navigate(['/customer']);
            });
