@@ -88,6 +88,18 @@
               font-size: 18px;
               font-weight: 500;
             }
+            & .spn-Pendiente {
+              background-color: orange;
+              padding: 5px;
+              border-radius: 0.8rem;
+              color: var(--color-text-primary);
+            }
+            & .spn-Finalizado {
+              background-color: green;
+              padding: 5px;
+              border-radius: 0.8rem;
+              color: var(--color-text-primary);
+            }
           }
         }
       }

@@ -72,7 +72,8 @@
                 >{{ operationNumbre }}</span
               >
               <span
-                ><span class="spanHeader">Estatus: </span>{{ finalized }}</span
+                ><span class="spanHeader">Estatus: </span
+                ><span [class]="'spn-' + finalized">{{ finalized }}</span></span
               >
               <span
                 ><span class="spanHeader">Fecha de inicio: </span
