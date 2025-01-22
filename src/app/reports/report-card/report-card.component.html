@@ -10,7 +10,10 @@
           >{{ data.operationNumbre }}</span
         >
         <span
-          ><span class="spanHeader">Estatus: </span>{{ data.finalized }}</span
+          ><span class="spanHeader">Estatus: </span
+          ><span [class]="'spn-' + data.finalized">{{
+            data.finalized
+          }}</span></span
         >
         <span
           ><span class="spanHeader">Fecha de inicio: </span

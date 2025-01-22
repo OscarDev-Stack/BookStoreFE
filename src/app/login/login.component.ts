@@ -8,11 +8,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 //import { JsonPipe } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
+import { MatIcon } from '@angular/material/icon';
 //import { NotificationsService } from 'angular2-notifications';
 
 @Component({
     selector: 'app-login',
-    imports: [SimpleHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+    imports: [SimpleHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, MatIcon],
     templateUrl: './login.component.html',
     styleUrl: './login.component.css'
 })

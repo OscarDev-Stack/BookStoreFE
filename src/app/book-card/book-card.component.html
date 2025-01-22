@@ -20,7 +20,11 @@
       <span class="isbn">{{ data.isbn }}</span>
     </p>
     <p>
-      <span></span>
+      <span
+        ><button mat-flat-button [routerLink]="'/book-detail/' + data.id">
+          <mat-icon>info</mat-icon><span>Detalle</span>
+        </button></span
+      >
     </p>
   </div>
 </div>

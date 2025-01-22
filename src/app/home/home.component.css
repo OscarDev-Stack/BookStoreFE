@@ -15,7 +15,7 @@
     & .container-book {
       display: flex;
       flex-wrap: wrap;
-      gap: 15px;
+      gap: 25px;
       justify-content: center;
       margin-left: 45px;
       margin-bottom: 20px;

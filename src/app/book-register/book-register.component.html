@@ -58,14 +58,16 @@
         />
         <div class="container-button">
           <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
-            Regresar
+            <mat-icon>arrow_back</mat-icon>
+            <span>Regresar</span>
           </button>
           <button
             mat-flat-button
             (click)="SaveBook()"
             [disabled]="bookRegister.invalid"
           >
-            Guardar
+            <mat-icon>save</mat-icon>
+            <span>Guardar</span>
           </button>
         </div>
       </form>

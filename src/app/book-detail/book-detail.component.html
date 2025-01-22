@@ -24,24 +24,29 @@
         </div>
         <div class="container-detail">
           <div>
-            <span class="txt-header">Descripción: </span
-            ><span>{{ book.synopsis }}</span>
+            <span class="txt-header">Descripción: </span>
+          </div>
+          <div>
+            <span class="text-description">{{ book.synopsis }}</span>
           </div>
         </div>
       </div>
       <div class="container-button">
         <button class="btn-regresar" mat-flat-button routerLink="/">
-          Regresar
+          <mat-icon>arrow_back</mat-icon>
+          <span>Regresar</span>
         </button>
         @if(authService.getIsLoggedIn() && (authService.getRole() ===
         'Administrator' || authService.getRole() === 'Librarian')){
         <button mat-flat-button [routerLink]="'/book-register/' + book.id">
-          Editar
+          <mat-icon>edit</mat-icon>
+          <span>Editar</span>
         </button>
         } @if(authService.getIsLoggedIn() && authService.getRole() ===
         'Administrator' ){
         <button class="btn-eliminar" mat-flat-button (click)="deleteBook()">
-          Eliminar
+          <mat-icon>delete</mat-icon>
+          <span>Eliminar</span>
         </button>
         }
       </div>

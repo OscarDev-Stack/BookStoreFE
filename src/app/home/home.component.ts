@@ -6,16 +6,14 @@ import { NgFor, NgIf } from '@angular/common';
 import { HomeService } from './home.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSelectModule} from '@angular/material/select';
-//import { customer } from '../shared/models/customer.model';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { HomeHeaderService } from './home-header/home-header.service';
 import { HomeHeaderComponent } from "./home-header/home-header.component";
-import { RouterLink } from '@angular/router';
 import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-home',
-  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, HomeHeaderComponent, RouterLink, MatPaginatorModule],
+  imports: [FooterComponent, BookCardComponent, NgFor, NgIf, MatFormFieldModule, MatSelectModule, ReactiveFormsModule, HomeHeaderComponent, MatPaginatorModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

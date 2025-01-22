@@ -8,10 +8,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { AuthService } from '../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../shared/services/customer.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-customer-register',
-  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule, MatIcon],
   templateUrl: './customer-register.component.html',
   styleUrl: './customer-register.component.css'
 })

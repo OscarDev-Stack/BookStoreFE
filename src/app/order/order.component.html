@@ -165,10 +165,13 @@
         }
         <div class="container-button">
           <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
-            Regresar
+            <mat-icon>arrow_back</mat-icon>
+            <span>Regresar</span>
           </button>
           @if(dataSourceOrder.data.length > 0 && idCustomer > 0){
-          <button mat-flat-button (click)="SaveOrder()">Guardar</button>
+          <button mat-flat-button (click)="SaveOrder()">
+            <mat-icon>save</mat-icon><span>Guardar</span>
+          </button>
           }
         </div>
       </div>

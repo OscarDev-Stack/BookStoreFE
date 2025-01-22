@@ -7,10 +7,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../shared/services/book.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-register',
-  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule],
+  imports: [LoggedHeaderComponent, FooterComponent, MatFormFieldModule, MatInputModule, MatButtonModule, ReactiveFormsModule,MatIcon],
   templateUrl: './book-register.component.html',
   styleUrl: './book-register.component.css'
 })

@@ -37,6 +37,9 @@
           *ngFor="let order of orders"
           [data]="order"
         ></app-report-card>
+        @if(orders.length === 0){
+        <h2>El cliente no cuenta con pedidos..!</h2>
+        }
       </div>
     </div>
   </div>

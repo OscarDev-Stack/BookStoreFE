@@ -50,7 +50,8 @@
         </div>
         <div class="container-button">
           <button mat-flat-button class="btn-regresar" (click)="navigateBack()">
-            Regresar
+            <mat-icon>arrow_back</mat-icon>
+            <span>Regresar</span>
           </button>
         </div>
       </div>
@@ -133,7 +134,9 @@
         </div>
         <div class="container-button">
           @if(orderId > 0 && !finalizedOk){
-          <button mat-flat-button (click)="Finalize()">Finalizar</button>
+          <button mat-flat-button (click)="Finalize()" class="btn-finalizar">
+            <mat-icon>check_circle</mat-icon><span>Finalizar</span>
+          </button>
           }
         </div>
       </div>

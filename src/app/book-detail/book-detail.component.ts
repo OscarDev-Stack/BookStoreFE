@@ -6,10 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { BookService } from '../shared/services/book.service';
 import { AuthService } from '../shared/services/auth.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-book-detail',
-  imports: [LoggedHeaderComponent, FooterComponent, MatButtonModule, RouterLink],
+  imports: [LoggedHeaderComponent, FooterComponent, MatButtonModule, RouterLink, MatIcon],
   templateUrl: './book-detail.component.html',
   styleUrl: './book-detail.component.css'
 })
